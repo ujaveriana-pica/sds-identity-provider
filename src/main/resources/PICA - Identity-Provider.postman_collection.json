@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "d8f687c8-973f-4927-899f-4c0f6b57c7c7",
+		"name": "PICA - Identity-Provider",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User-Sign-Up",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"bsilva\",\r\n    \"name\": \"Bryan\",\r\n    \"last_name\": \"Silva\",\r\n    \"password\": \"admin\",\r\n    \"email\": \"bsilva@javeriana.edu.co\",\r\n    \"status\": \"ACTIVE\",\r\n    \"rol\": \"ADMIN\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/sign-up",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhb3ZhbGxlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9hdXRoL2FjY2Vzcy10b2tlbiIsImV4cCI6MTYzNjg0NTczMX0.PNKDHm29eg37RLYVeF6yYYx8vpyC8_Pj0I_uSg0UA4o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"bsilva\",\r\n    \"name\": \"Bryan\",\r\n    \"last_name\": \"Silva\",\r\n    \"email\": \"bsilva@javeriana.edu.co\",\r\n    \"status\": \"ACTIVE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/2aa4ee94-59d2-4745-8a58-340a3f3f23ce/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"2aa4ee94-59d2-4745-8a58-340a3f3f23ce",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-Detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJic2lsdmEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL2F1dGgvYWNjZXNzLXRva2VuIiwiZXhwIjoxNjM3MDAzNDAxfQ.u5w4HUb_T7LKjre8xECGwXNVSaDviPe9i0HaTMs3qvE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/user/bsilva/detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"bsilva",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth-Access-Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"bsilva\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/access-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"access-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth-Refresh-Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhb3ZhbGxlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9hdXRoL2FjY2Vzcy10b2tlbiIsImV4cCI6MTYzNjg0NzUxOH0.dAfjnTqECcAsvfqwL3VeWSS0ZQffNYR6fNxQC8nsOLE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/auth/refresh-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"refresh-token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
