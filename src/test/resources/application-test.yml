@@ -1,0 +1,28 @@
+server:
+  port: 9030
+logging:
+  format: TEXT
+  level:
+    org:
+      springframework:
+        data:
+          r2dbc: ERROR
+spring:
+  r2dbc:
+    url: r2dbc:pool:mysql://localhost:3306/pica
+    pool:
+      max-size: 15
+      max-idle-time: 10m
+      validation-query: SELECT 1
+    username: root
+    password: admin1234
+    name: pica
+
+  jackson:
+    property-naming-strategy: com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+    dispatch-options-request: true
+

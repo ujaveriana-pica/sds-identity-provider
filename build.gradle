@@ -1,0 +1,29 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.2.RELEASE")
+    }
+}
+
+def gradlePath = "${rootProject.projectDir}${project.property('gradle.path')}"
+apply from: "${gradlePath}/build-plugins.gradle"
+apply from: "${gradlePath}/build-config.gradle"
+apply from: "${gradlePath}/build-dependencies.gradle"
+apply from: "${gradlePath}/build-test-dependencies.gradle"
+
+dependencyManagement {
+    imports {
+        mavenBom(SpringBootPlugin.BOM_COORDINATES)
+    }
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}

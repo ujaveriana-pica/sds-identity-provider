@@ -1,0 +1,28 @@
+server:
+  port: 8080
+logging:
+  format: TEXT
+  level:
+    org:
+      springframework:
+        data:
+          r2dbc: ERROR
+spring:
+  r2dbc:
+    url: r2dbc:pool:mysql://${DS_HOSTNAME}:${DS_PORT}/${DS_DB_NAME}
+    pool:
+      max-size: 15
+      max-idle-time: 10m
+      validation-query: SELECT 1
+    username: ${DS_USERNAME}
+    password: ${DS_PASSWORD}
+    name: ${DS_DB_NAME}
+
+  jackson:
+    property-naming-strategy: com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+    dispatch-options-request: true
+
