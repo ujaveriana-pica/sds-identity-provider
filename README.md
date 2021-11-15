@@ -1,16 +1,7 @@
-# MS Identidad - VUDTS - PICA - Javeriana
+# sds-identity-provider
 
 Microservicio de identificación para el registro de usuarios y autenticación con tokens JWT
 
-### Pre-requisitos 📋
-
-**AWS**
-
-Para el consumo sobre AWS se requiere abrir la colección de Postman, el cual se encuentra en los recursos del proyecto.
-
-**Local**
-
-Para ejecutar localmente, puede sincronizar el repositorio git, la  gestión de dependencias se hace mediante Gradle y Maven, debido a esto es necesario tener acceso al repositorio central de Maven y sincronizar gradle para realizar la descarga de todas las dependencias requeridas para la implementación.
 
 ### Instalación 🔧
 
@@ -28,6 +19,10 @@ CREATE TABLE `pica`.`user` (
   `rol` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`user_id`));
 ```
+
+Puede levantar directamente la instancia del servicio, mediante: 
+* [Docker](https://hub.docker.com/r/dockerbasp/sds-identity-provider) - Servicio dockerizado
+
 ## Construido con 🛠️
 
 Las herramientas utilizadas para la implementación de la solución son:
