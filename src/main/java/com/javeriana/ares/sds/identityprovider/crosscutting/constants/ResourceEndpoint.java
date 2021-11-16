@@ -6,6 +6,7 @@ public class ResourceEndpoint {
     }
 
     public static final String ALL_ORIGIN = "*";
+    public static final String PING_RESOURCE = "/ping";
     public static final String API = "/api";
     public static final String USER_RESOURCE = API + "/user";
     public static final String AUTH_RESOURCE = API + "/auth";

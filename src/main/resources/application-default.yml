@@ -26,3 +26,19 @@ spring:
     throw-exception-if-no-handler-found: true
     dispatch-options-request: true
 
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      sasl:
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin-secret";
+        mechanism: PLAIN
+      security:
+        protocol: SASL_PLAINTEXT
+    producer:
+      client-id: sds-identity-provider
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 2
+    jaas:
+      enabled: true

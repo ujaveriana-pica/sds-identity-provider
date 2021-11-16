@@ -1,5 +1,7 @@
 package com.javeriana.ares.sds.identityprovider.entrypoint.service.impl;
 
+import com.google.gson.Gson;
+import com.javeriana.ares.sds.identityprovider.crosscutting.constants.Constants;
 import com.javeriana.ares.sds.identityprovider.dataprovider.db.repository.UserRepository;
 import com.javeriana.ares.sds.identityprovider.entrypoint.service.UserService;
 import com.javeriana.ares.sds.identityprovider.model.domain.UserDO;
@@ -10,10 +12,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.util.Collections;
+import java.util.UUID;
 
 @Log4j2
 @Service
@@ -23,6 +27,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
+
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -39,7 +46,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public Mono<UserDO> saveUser(UserDO userDO) {
         return userRepository.save(
                 UserMapper.MAPPER.mapSave(userDO, passwordEncoder)
-        ).map(UserMapper.MAPPER::map);
+        ).map(UserMapper.MAPPER::map)
+                .map(u -> {
+                    kafkaTemplate.send(Constants.USERS_TOPIC, UUID.randomUUID().toString(), new Gson().toJson(u));
+                    return u;
+                });
     }
 
     @Override

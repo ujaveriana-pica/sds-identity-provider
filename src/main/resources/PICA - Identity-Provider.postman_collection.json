@@ -63,7 +63,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/user/2aa4ee94-59d2-4745-8a58-340a3f3f23ce/update",
+					"raw": "http://localhost:8080/api/user/5fd1d638-7299-4335-ab38-2cf2fa85559c/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -72,7 +72,7 @@
 					"path": [
 						"api",
 						"user",
-						"2aa4ee94-59d2-4745-8a58-340a3f3f23ce",
+						"5fd1d638-7299-4335-ab38-2cf2fa85559c",
 						"update"
 					]
 				}
@@ -87,7 +87,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJic2lsdmEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL2F1dGgvYWNjZXNzLXRva2VuIiwiZXhwIjoxNjM3MDAzNDAxfQ.u5w4HUb_T7LKjre8xECGwXNVSaDviPe9i0HaTMs3qvE",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJic2lsdmEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL2F1dGgvYWNjZXNzLXRva2VuIiwiZXhwIjoxNjM3MDM5MTY1fQ.NwPuglWf4LKgxRcHma7Qha0tl5wclqhUT-HwzOqPmf4",
 							"type": "string"
 						}
 					]
@@ -155,7 +155,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhb3ZhbGxlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9hdXRoL2FjY2Vzcy10b2tlbiIsImV4cCI6MTYzNjg0NzUxOH0.dAfjnTqECcAsvfqwL3VeWSS0ZQffNYR6fNxQC8nsOLE",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJic2lsdmEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL2F1dGgvYWNjZXNzLXRva2VuIiwiZXhwIjoxNjM3MDM5MTY1fQ.NwPuglWf4LKgxRcHma7Qha0tl5wclqhUT-HwzOqPmf4",
 							"type": "string"
 						}
 					]
@@ -173,6 +173,25 @@
 						"api",
 						"auth",
 						"refresh-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ping-Pong",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ping"
 					]
 				}
 			},

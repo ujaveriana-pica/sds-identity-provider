@@ -15,5 +15,6 @@ public class Constants {
     public static final Long REFRESH_TOKEN_TIME = System.currentTimeMillis() + 60 * 60 * 1000;
     public static final String ERROR_MESSAGE = "error_message";
     public static final String BEARER = "Bearer ";
+    public static final String USERS_TOPIC = "users";
 
 }

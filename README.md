@@ -5,19 +5,20 @@ Microservicio de identificación para el registro de usuarios y autenticación c
 
 ### Instalación 🔧
 
-- Crea la base de datos **pica** y luego ejecuta el script **resources/PICA - Identity-Provider-DB.sql**
+- Crea la base de datos **sds-identity-provider** y luego ejecuta el script **resources/PICA - Identity-Provider-DB.sql**
 
 ```
-CREATE TABLE `pica`.`user` (
-  `user_id` VARCHAR(150) NOT NULL,
-  `username` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(150) NOT NULL,
-  `last_name` VARCHAR(150) NOT NULL,
-  `password` VARCHAR(150) NOT NULL,
-  `email` VARCHAR(150) NOT NULL,
-  `status` VARCHAR(45) NOT NULL,
-  `rol` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`user_id`));
+CREATE TABLE `sds-identity-provider`.`user` (
+   `user_id` VARCHAR(150) NOT NULL,
+   `username` VARCHAR(45) NOT NULL,
+   `name` VARCHAR(150) NOT NULL,
+   `last_name` VARCHAR(150) NOT NULL,
+   `password` VARCHAR(150) NOT NULL,
+   `email` VARCHAR(150) NOT NULL,
+   `status` VARCHAR(45) NOT NULL,
+   `rol` VARCHAR(45) NOT NULL,
+   PRIMARY KEY (`user_id`),
+   UNIQUE (username));
 ```
 
 Puede levantar directamente la instancia del servicio, mediante: 
