@@ -8,6 +8,7 @@ import com.javeriana.ares.sds.identityprovider.model.domain.UserDO;
 import com.javeriana.ares.sds.identityprovider.model.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,7 +36,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.getByUsername(username).map(
                 u -> new org.springframework.security.core.userdetails.User
-                        (u.getUsername(), u.getPassword(), Collections.emptyList())
+                        (u.getUsername(), u.getPassword(),
+                                Collections.singletonList(new SimpleGrantedAuthority(u.getRol())))
         ).switchIfEmpty(
                 Mono.just(new org.springframework.security.core.userdetails.User
                         (username, "null", Collections.emptyList()))

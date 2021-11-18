@@ -1,5 +1,14 @@
 server:
   port: 9030
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 logging:
   format: TEXT
   level:

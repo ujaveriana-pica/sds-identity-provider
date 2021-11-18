@@ -3,7 +3,7 @@ package com.javeriana.ares.sds.identityprovider.configuration.security;
 import com.javeriana.ares.sds.identityprovider.crosscutting.constants.ResourceEndpoint;
 import com.javeriana.ares.sds.identityprovider.crosscutting.filter.CustomAuthenticationFilter;
 import com.javeriana.ares.sds.identityprovider.crosscutting.filter.CustomAuthorizationFilter;
-import lombok.RequiredArgsConstructor;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,11 +19,13 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsService userDetailsService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    @MockBean
+    private UserDetailsService userDetailsService;
+
+    @MockBean
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

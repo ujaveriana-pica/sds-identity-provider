@@ -1,0 +1,180 @@
+swagger: '2.0'
+info:
+  description: 'Microservicio de identificación para el registro de usuarios y autenticación con tokens JWT'
+  version: 1.0.0
+  title: sds-identity-provider
+host: sds-identity-provider
+basePath: /api
+tags:
+  - name: Usuario
+    description: Definición de API relacionadas con la administración del usuario
+  - name: Autenticación
+    description: Definición de API relacionadas con la autenticación del servicio
+    
+schemes:
+  - https
+  - http
+paths:
+  /user/sign-up:
+    post:
+      tags:
+        - Usuario
+      summary: Registrar usuario
+      operationId: sign-up
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Objeto tipo usuario
+          required: true
+          schema:
+            $ref: '#/definitions/Usuario'
+      responses:
+        '200':
+          description: Usuario registrado correctamente
+        '400':
+          description: Usuario inválido
+        
+  /user/{user-uuid}/update:
+    patch:
+      tags:
+        - Usuario
+      summary: Actualizar usuario
+      operationId: update
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: user-uuid
+          description: 'Identificador del usuario '
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Objeto tipo usuario
+          required: true
+          schema:
+            $ref: '#/definitions/Usuario'
+      responses:
+        '200':
+          description: Usuario actualizado correctamente
+        '400':
+          description: Usuario inválido
+      security:
+        - jwt: []
+  /user/{username}/detail:
+    get:
+      tags:
+        - Usuario
+      summary: Obtener usuario por nombre de usuario
+      operationId: detail
+      produces:
+        - application/json
+      parameters:
+        - name: username
+          in: path
+          description: 'Nombre de usuario del usuario '
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Usuario obtenido correctamente
+          schema:
+            $ref: '#/definitions/Usuario'
+        '404':
+          description: Usuario no encontrado   
+      security:
+        - jwt: []
+            
+  /auth/access-token:
+    post:
+      tags:
+        - Autenticación
+      summary: Autenticar usuario y dar acceso seguro al sistema
+      operationId: access-token
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Objeto tipo login
+          required: true
+          schema:
+            $ref: '#/definitions/Login'
+      responses:
+        '200':
+          description: Autenticación exitosa
+          schema:
+            $ref: '#/definitions/Token'
+        '403':
+          description: Acceso denegado
+  /auth/refresh-token:
+    get:
+      tags:
+        - Autenticación
+      summary: Refrescar token de acceso
+      operationId: refresh-token
+      produces:
+        - application/json
+      parameters: 
+        - name: token
+          in: header
+          description: Bearer Token
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Autenticación exitosa
+          schema:
+            $ref: '#/definitions/Token'
+        '403':
+          description: Acceso denegado
+      security:
+        - jwt: []
+        
+securityDefinitions:
+  jwt:
+    type: apiKey
+    name: access-token
+    in: header
+
+definitions:
+  Usuario:
+    type: object
+    properties:
+      username:
+        type: string
+      name:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      email:
+        type: string
+      status:
+        type: string
+      rol:
+        type: string
+
+  Login:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+          
+  Token:
+    type: object
+    properties:
+      acces_token:
+        type: string
+      refresh_token:
+        type: string
+ 

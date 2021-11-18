@@ -5,7 +5,7 @@ Microservicio de identificación para el registro de usuarios y autenticación c
 
 ### Instalación 🔧
 
-- Crea la base de datos **sds-identity-provider** y luego ejecuta el script **resources/PICA - Identity-Provider-DB.sql**
+- Crea la base de datos **sds-identity-provider** y luego ejecuta el siguiente script:
 
 ```
 CREATE TABLE `sds-identity-provider`.`user` (
@@ -22,7 +22,7 @@ CREATE TABLE `sds-identity-provider`.`user` (
 ```
 
 Puede levantar directamente la instancia del servicio, mediante: 
-* [Docker](https://hub.docker.com/r/dockerbasp/sds-identity-provider) - Servicio dockerizado
+* [Docker](https://hub.docker.com/r/dockerbasp/sds-identity-provider) - Imagen del servicio.
 
 ## Construido con 🛠️
 
@@ -30,11 +30,18 @@ Las herramientas utilizadas para la implementación de la solución son:
 
 * [AWS](https://aws.amazon.com/) - Despliegue en la nube de los servicios y base de datos
 * [MySQL](https://www.mysql.com/) - Gestor de base de datos
-* [Java 8](https://www.java.com/es/download/help/java8.html) - Lenguaje programación
+* [Kafka](https://kafka.apache.org/) - Broker de eventos
+* [Java](https://openjdk.java.net/) - Lenguaje programación
 * [SpringBoot](https://spring.io/projects/spring-boot) - Framework de desarrollo
 * [Gradle](https://gradle.org/) - Configuración del proyecto
 * [Maven](https://maven.apache.org/) - Gestor de dependencias
 
+## Definición 📋
+
+Para ver la definición del servicio, ingresar a:
+* [Swagger](https://github.com/ujaveriana-pica/sds-identity-provider/definition/sds-identity-provider-swagger.yaml) - Definición del contrato.
+* [Postman](https://github.com/ujaveriana-pica/sds-identity-provider/definition/sds-identity-provider.postman_collection.json) - Colección de API definidas.
+* [MySQL](https://github.com/ujaveriana-pica/sds-identity-provider/definition/sds-identity-provider-user.sql) - Script base de datos definido
 
 
 ## Autores ✒️

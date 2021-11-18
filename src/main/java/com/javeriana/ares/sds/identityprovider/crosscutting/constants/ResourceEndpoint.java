@@ -6,7 +6,6 @@ public class ResourceEndpoint {
     }
 
     public static final String ALL_ORIGIN = "*";
-    public static final String PING_RESOURCE = "/ping";
     public static final String API = "/api";
     public static final String USER_RESOURCE = API + "/user";
     public static final String AUTH_RESOURCE = API + "/auth";
@@ -16,6 +15,4 @@ public class ResourceEndpoint {
     public static final String REFRESH_TOKEN_RESOURCE = "/refresh-token";
     public static final String ACCESS_TOKEN_AUTH_RESOURCE = AUTH_RESOURCE + "/access-token";
     public static final String SIGN_UP_AUTH_RESOURCE = USER_RESOURCE + SIGN_UP_RESOURCE;
-    public static final String REFRESH_TOKEN_AUTH_RESOURCE = AUTH_RESOURCE + REFRESH_TOKEN_RESOURCE;
-
 }

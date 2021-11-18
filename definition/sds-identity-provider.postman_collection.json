@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "d8f687c8-973f-4927-899f-4c0f6b57c7c7",
-		"name": "PICA - Identity-Provider",
+		"name": "sds-identity-provider",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -15,7 +15,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\":\"bsilva\",\r\n    \"name\": \"Bryan\",\r\n    \"last_name\": \"Silva\",\r\n    \"password\": \"admin\",\r\n    \"email\": \"bsilva@javeriana.edu.co\",\r\n    \"status\": \"ACTIVE\",\r\n    \"rol\": \"ADMIN\"\r\n\r\n}",
+					"raw": "{\r\n    \"username\":\"bsilva2\",\r\n    \"name\": \"Bryan\",\r\n    \"last_name\": \"Silva\",\r\n    \"password\": \"admin\",\r\n    \"email\": \"bsilva@javeriana.edu.co\",\r\n    \"status\": \"ACTIVE\",\r\n    \"rol\": \"ADMIN\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -23,12 +23,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/user/sign-up",
+					"raw": "http://localhost:9030/api/user/sign-up",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9030",
 					"path": [
 						"api",
 						"user",
@@ -42,17 +42,16 @@
 			"name": "User-Update",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhb3ZhbGxlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9hdXRoL2FjY2Vzcy10b2tlbiIsImV4cCI6MTYzNjg0NTczMX0.PNKDHm29eg37RLYVeF6yYYx8vpyC8_Pj0I_uSg0UA4o",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "PATCH",
-				"header": [],
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "YnNpbHZhO0FETUlO",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"username\": \"bsilva\",\r\n    \"name\": \"Bryan\",\r\n    \"last_name\": \"Silva\",\r\n    \"email\": \"bsilva@javeriana.edu.co\",\r\n    \"status\": \"ACTIVE\"\r\n}",
@@ -63,12 +62,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/user/5fd1d638-7299-4335-ab38-2cf2fa85559c/update",
+					"raw": "http://localhost:9030/api/user/5fd1d638-7299-4335-ab38-2cf2fa85559c/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9030",
 					"path": [
 						"api",
 						"user",
@@ -83,14 +82,7 @@
 			"name": "User-Detail",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJic2lsdmEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL2F1dGgvYWNjZXNzLXRva2VuIiwiZXhwIjoxNjM3MDM5MTY1fQ.NwPuglWf4LKgxRcHma7Qha0tl5wclqhUT-HwzOqPmf4",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "GET",
 				"header": [
@@ -98,15 +90,20 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "YnNpbHZhO0FETUlO",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/user/bsilva/detail",
+					"raw": "http://localhost:9030/api/user/bsilva/detail",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9030",
 					"path": [
 						"api",
 						"user",
@@ -132,12 +129,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/auth/access-token",
+					"raw": "http://localhost:9030/api/auth/access-token",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9030",
 					"path": [
 						"api",
 						"auth",
@@ -155,7 +152,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJic2lsdmEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL2F1dGgvYWNjZXNzLXRva2VuIiwiZXhwIjoxNjM3MDM5MTY1fQ.NwPuglWf4LKgxRcHma7Qha0tl5wclqhUT-HwzOqPmf4",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJic2lsdmEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjkwMzAvYXBpL2F1dGgvYWNjZXNzLXRva2VuIiwiZXhwIjoxNjM3MTk1Njg3LCJyb2wiOiJBRE1JTiJ9.1w00jMD9gioFTiSGomyRKigQTBIRSVR7czqMLFOqPDM",
 							"type": "string"
 						}
 					]
@@ -163,35 +160,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/auth/refresh-token",
+					"raw": "http://localhost:9030/api/auth/refresh-token",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9030",
 					"path": [
 						"api",
 						"auth",
 						"refresh-token"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Ping-Pong",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/ping",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ping"
 					]
 				}
 			},
