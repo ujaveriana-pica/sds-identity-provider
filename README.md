@@ -39,9 +39,9 @@ Las herramientas utilizadas para la implementación de la solución son:
 ## Definición 📋
 
 Para ver la definición del servicio, ingresar a:
-* [Swagger](https://github.com/ujaveriana-pica/sds-identity-provider/definition/sds-identity-provider-swagger.yaml) - Definición del contrato.
-* [Postman](https://github.com/ujaveriana-pica/sds-identity-provider/definition/sds-identity-provider.postman_collection.json) - Colección de API definidas.
-* [MySQL](https://github.com/ujaveriana-pica/sds-identity-provider/definition/sds-identity-provider-user.sql) - Script base de datos definido
+* [Swagger](https://github.com/ujaveriana-pica/sds-identity-provider/blob/main/definition/sds-identity-provider-swagger.yaml) - Definición del contrato.
+* [Postman](https://github.com/ujaveriana-pica/sds-identity-provider/blob/main/definition/sds-identity-provider.postman_collection.json) - Colección de API definidas.
+* [MySQL](https://github.com/ujaveriana-pica/sds-identity-provider/blob/main/definition/sds-identity-provider-user.sql) - Script base de datos definido
 
 
 ## Autores ✒️
