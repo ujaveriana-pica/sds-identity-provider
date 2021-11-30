@@ -11,15 +11,17 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: "jacoco"
+apply plugin: 'org.sonarqube'
 
 def jacocoExclude = ['**/Application*', '**/model/**', '**/crosscutting/**', '**/dataprovider/**', '**/configuration/**', '**/service/**']
 
 jacocoTestReport {
     dependsOn test
     reports {
-        xml.enabled false
+        xml.enabled true
         csv.enabled false
         html.destination file("${buildDir}/reports/jacoco")
+        xml.destination file("${buildDir}/reports/jacoco/jacoco.xml")
     }
     afterEvaluate {
         getClassDirectories().setFrom(classDirectories.files.collect {
@@ -41,6 +43,20 @@ jacocoTestCoverageVerification {
                 minimum = 0.8
             }
         }
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "ujaveriana-pica_sds-resolutions"
+        property "sonar.organization", "ujaveriana-pica"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.verbose", "true"
+        property "sonar.reportPath" , "${buildDir}/jacoco/test.exec"
+        property 'sonar.language', 'java'
+        property 'sonar.core.codeCoveragePlugin', 'jacoco'
+        property 'sonar.coverage.jacoco.xmlReportPaths', "${buildDir}/reports/jacoco/jacoco.xml"
+        property 'sonar.coverage.exclusions', jacocoExclude
     }
 }
 
