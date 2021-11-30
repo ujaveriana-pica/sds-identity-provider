@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM adoptopenjdk/openjdk11:latest
 VOLUME /tmp
 COPY "./build/libs/sds-identity-provider-1.0.jar" "app.jar"
 EXPOSE 8080
